@@ -35,9 +35,7 @@
         const csvData = await getData();
         console.log(csvData);
 
-        var items = $.csv.toObjects(csvData);
-        console.log(items);
-        var coaches = JSON.stringify(items);
+        var coaches = $.csv.toObjects(csvData);
         console.log(coaches);
 
         return coaches;
