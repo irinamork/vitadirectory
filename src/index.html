@@ -103,13 +103,19 @@
         }
         return true;
       }
+      function includeForLanguage(coach, language) {
+        if (language) {
+          return coach.languages.split(", ").includes(language);
+        }
+        return true;
+      }
       function filterCoaches(coaches, filters) {
         const filteredCoaches = coaches.filter(coach => {
           return (filters.cohort.includes(coach.cohort) &&
             includeForArray(coach, filters.graduated) &&
             includeForRemote(coach, filters.remote) &&
             includeForDropdown(coach, filters.country) &&
-            includeForDropdown(coach, filters.language)
+            includeForLanguage(coach, filters.language)
           );
         });
         return filteredCoaches;
