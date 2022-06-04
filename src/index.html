@@ -48,9 +48,7 @@
 
       async function main() {
         coaches = await getCoaches();
-        coaches.forEach((coach) => {
-            insertCoach(coach);
-        });
+        onSearch();
       }
 
       // filters = {
@@ -93,6 +91,7 @@
         filteredCoaches.forEach((coach) => {
             insertCoach(coach);
         });
+        $("#numberOfCoaches").html(`${filteredCoaches.length}`);
       }
 
       async function getData() {
@@ -635,6 +634,7 @@
   
       <input type="button" value="Search / Filter" id="searchbutton">
     </form>
+    <div>Search results: <span id="numberOfCoaches"></span></div>
     <div id="coaches">
       <!-- <div class="coachCard">
         <div class="coachName">Liz Riley Christiano</div>
