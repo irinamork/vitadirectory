@@ -68,14 +68,28 @@
         if ($("#2021").is( ':checked' )) cohort.push("2021");
         if ($("#2022").is( ':checked' )) cohort.push("2022");
         if (cohort.length === 0) cohort = ["2017", "2018", "2019", "2020", "2021", "2022"];
+
+        let graduated = [];
+        if ($("#core").is( ':checked' )) cohort.push("Core Certification");
+        if ($("#femalesexuality").is( ':checked' )) cohort.push("Female Sexuality");
+        if ($("#jadeegg").is( ':checked' )) cohort.push("Jade Egg");
+        if ($("#theintegratedmasculine").is( ':checked' )) cohort.push("The Integrated Masculine");
+        if ($("#consciousdating").is( ':checked' )) cohort.push("Conscious Dating");
+        if ($("#tantricsex").is( ':checked' )) cohort.push("Tantric Sex");
+        if ($("#relationshiptransformation").is( ':checked' )) cohort.push("Relationship Transformation");
+        if ($("#lifetransitions").is( ':checked' )) cohort.push("Life Transitions");
+        if ($("#womensempowerment").is( ':checked' )) cohort.push("Women's Empowerment");
         
         return {
-          cohort
+          cohort,
+          graduated
         };
       }
       function filterCoaches(coaches, filters) {
         const filteredCoaches = coaches.filter(coach => {
-          return (filters.cohort.includes(coach.cohort));
+          return (filters.cohort.includes(coach.cohort) &&
+            (filters.graduated.forEach((grad) => {coach.graduated.split(", ").includes(grad)}))
+          );
         });
         return filteredCoaches;
       }
@@ -175,7 +189,7 @@
         </div>
       </fieldset>
 
-      <fieldset disabled>
+      <fieldset>
         <legend>Graduated</legend>
         <div class="form-graduated">
           <input type="checkbox" id="core" name="core">
