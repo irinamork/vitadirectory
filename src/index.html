@@ -85,10 +85,13 @@
           graduated
         };
       }
+      function includeForGraduated(coach, graduatedArray) {
+        return graduatedArray.map(specialization => coach.graduated.split(", ").includes(specialization)).reduce((previousValue, currentValue) => previousValue && currentValue, true);
+      }
       function filterCoaches(coaches, filters) {
         const filteredCoaches = coaches.filter(coach => {
           return (filters.cohort.includes(coach.cohort) &&
-            (filters.graduated.forEach((grad) => {return coach.graduated.split(", ").includes(grad)}))
+            includeForGraduated(coach, filters.graduated)
           );
         });
         return filteredCoaches;
