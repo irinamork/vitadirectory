@@ -79,6 +79,10 @@
         if ($("#relationshiptransformation").is( ':checked' )) graduated.push("Relationship Transformation");
         if ($("#lifetransitions").is( ':checked' )) graduated.push("Life Transitions");
         if ($("#womensempowerment").is( ':checked' )) graduated.push("Women's Empowerment");
+
+        let remote = "any";
+        if ($("#remote-yes").is( ':checked' )) remote = "yes";
+        if ($("#remote-no").is( ':checked' )) remote = "no";
         
         return {
           cohort,
@@ -88,10 +92,18 @@
       function includeForGraduated(coach, graduatedArray) {
         return graduatedArray.map(specialization => coach.graduated.split(", ").includes(specialization)).reduce((previousValue, currentValue) => previousValue && currentValue, true);
       }
+
+      function includeForRemote(coach, remote) {
+        if (remote === "no" || remote === "yes") {
+          return coach.remote === remote;
+        }
+        return true;
+      }
       function filterCoaches(coaches, filters) {
         const filteredCoaches = coaches.filter(coach => {
           return (filters.cohort.includes(coach.cohort) &&
-            includeForGraduated(coach, filters.graduated)
+            includeForGraduated(coach, filters.graduated) &&
+            includeForRemote(coach, filters.remote)
           );
         });
         return filteredCoaches;
@@ -232,7 +244,7 @@
         </div>
       </fieldset>
 
-      <fieldset disabled>
+      <fieldset>
         <legend>Remote</legend>
         <div class="form-remote">
           <input type="radio" id="remote-any" name="remote-any" value="remote-any"
