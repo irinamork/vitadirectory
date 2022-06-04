@@ -52,15 +52,20 @@
     <script>
       const coaches = JSON.parse(document.getElementById("data").text);
 
-      async function main() {
-        const data = await getData();
-        console.log(data);
+      async function getCoaches() {
+        const csvData = await getData();
+        console.log(csvData);
 
-        var items = $.csv.toObjects(data);
+        var items = $.csv.toObjects(csvData);
         console.log(items);
-        var jsonobject = JSON.stringify(items);
-        console.log(jsonobject);
-          
+        var coaches = JSON.stringify(items);
+        console.log(coaches);
+
+        return coaches;
+      }
+
+      async function main() {
+        const coaches = await getCoaches();
         coaches.forEach((coach) => {
             insertCoach(coach);
         });
