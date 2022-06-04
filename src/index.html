@@ -81,11 +81,15 @@
         if ($("#womensempowerment").is( ':checked' )) graduated.push("Women's Empowerment");
 
         let remote = $('input[name="remote"]:checked').val();
+
+        let country = $('input[name="country"]').val();
+
         
         return {
           cohort,
           graduated,
-          remote
+          remote,
+          country
         };
       }
       function includeForGraduated(coach, graduatedArray) {
@@ -95,6 +99,12 @@
       function includeForRemote(coach, remote) {
         if (remote === "No" || remote === "Yes") {
           return coach.remote === remote;
+        }
+        return true;
+      }
+      function includeForCountry(coach, country) {
+        if (country) {
+          return coach.country === country;
         }
         return true;
       }
@@ -147,7 +157,7 @@
           <a href="${coach.website}" target="_blank">${coach.website}</a>
         </div>
         <div class="coachLocation">
-          <span class="field">Location:</span> ${coach.location}
+          <span class="field">Location:</span> ${coach.country}, ${coach.city}
           <span class="field">Remote coach:</span> ${coach.remote}
           <span class="field">Languages:</span> ${coach.languages}
         </div>
@@ -260,7 +270,7 @@
         </div>
       </fieldset> 
 
-      <fieldset disabled>
+      <fieldset>
         <legend>Country</legend>
         <select id="country" name="country" class="form-control">
           <option>Select Country</option>
