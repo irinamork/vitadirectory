@@ -80,9 +80,7 @@
         if ($("#lifetransitions").is( ':checked' )) graduated.push("Life Transitions");
         if ($("#womensempowerment").is( ':checked' )) graduated.push("Women's Empowerment");
 
-        let remote = "any";
-        if ($("#remote-yes").is( ':checked' )) remote = "yes";
-        if ($("#remote-no").is( ':checked' )) remote = "no";
+        let remote = $('input[name="remote"]:checked').val();
         
         return {
           cohort,
@@ -247,16 +245,16 @@
       <fieldset>
         <legend>Remote</legend>
         <div class="form-remote">
-          <input type="radio" id="remote-any" name="remote-any" value="remote-any"
+          <input type="radio" id="remote-any" name="remote" value="any"
                  checked>
           <label for="remote-any">Any</label>
         </div>
         <div class="form-remote">
-          <input type="radio" id="remote-yes" name="remote-yes" value="remote-yes">
+          <input type="radio" id="remote-yes" name="remote" value="yes">
           <label for="remote-yes">Yes</label>
         </div>
         <div class="form-remote">
-          <input type="radio" id="remote-no" name="remote-no" value="remote-no">
+          <input type="radio" id="remote-no" name="remote" value="no">
           <label for="remote-any">No</label>
         </div>
       </fieldset> 
