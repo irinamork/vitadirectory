@@ -134,7 +134,7 @@
       $(document).ready(async function () {
         await main();
 
-        $( "#searchbutton" ).submit(function( event ) {
+        $( "#searchbutton" ).click(function( event ) {
           onSearch();
           event.preventDefault();
         });
