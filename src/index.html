@@ -88,7 +88,7 @@
       function filterCoaches(coaches, filters) {
         const filteredCoaches = coaches.filter(coach => {
           return (filters.cohort.includes(coach.cohort) &&
-            (filters.graduated.forEach((grad) => {coach.graduated.split(", ").includes(grad)}))
+            (filters.graduated.forEach((grad) => {return coach.graduated.split(", ").includes(grad)}))
           );
         });
         return filteredCoaches;
