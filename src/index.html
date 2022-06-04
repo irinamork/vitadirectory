@@ -93,7 +93,7 @@
       }
 
       function includeForRemote(coach, remote) {
-        if (remote === "no" || remote === "yes") {
+        if (remote === "No" || remote === "Yes") {
           return coach.remote === remote;
         }
         return true;
@@ -246,16 +246,16 @@
       <fieldset>
         <legend>Remote</legend>
         <div class="form-remote">
-          <input type="radio" id="remote-any" name="remote" value="any"
+          <input type="radio" id="remote-any" name="remote" value="Any"
                  checked>
           <label for="remote-any">Any</label>
         </div>
         <div class="form-remote">
-          <input type="radio" id="remote-yes" name="remote" value="yes">
+          <input type="radio" id="remote-yes" name="remote" value="Yes">
           <label for="remote-yes">Yes</label>
         </div>
         <div class="form-remote">
-          <input type="radio" id="remote-no" name="remote" value="no">
+          <input type="radio" id="remote-no" name="remote" value="No">
           <label for="remote-any">No</label>
         </div>
       </fieldset> 
