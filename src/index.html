@@ -53,28 +53,30 @@
       const coaches = JSON.parse(document.getElementById("data").text);
 
       function main() {
+          const data = await getData();
+          console.log(data)
+          
           coaches.forEach((coach) => {
               insertCoach(coach);
           });
-
-          getData();
       }
 
-      function getData() {
-        $.ajax({
+      async function getData() {
+        const result = await $.ajax({
             url: "./data/data.csv",
-            async: false,
-            success: function (csvd) {
-                var items = $.csv.toObjects(csvd);
-                console.log(items);
-                // var jsonobject = JSON.stringify(items);
-                // alert(jsonobject);
-            },
-            dataType: "text",
-            complete: function () {
-                // call a function on complete 
-            }
+            // async: false,
+            // success: function (csvd) {
+            //     var items = $.csv.toObjects(csvd);
+            //     console.log(items);
+            //     // var jsonobject = JSON.stringify(items);
+            //     // alert(jsonobject);
+            // },
+            // dataType: "text",
+            // complete: function () {
+            //     // call a function on complete 
+            // }
         });
+        return result;
       }
 
       function insertCoach(coach) {
