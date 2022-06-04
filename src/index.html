@@ -52,7 +52,7 @@
     <script>
       const coaches = JSON.parse(document.getElementById("data").text);
 
-      function main() {
+      async function main() {
           const data = await getData();
           console.log(data)
           
@@ -111,8 +111,8 @@
 `);
       }
 
-      $(document).ready(function () {
-        main();
+      $(document).ready(async function () {
+        await main();
       });
     </script>
   </head>
