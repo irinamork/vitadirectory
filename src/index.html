@@ -51,14 +51,6 @@
         onSearch();
       }
 
-      // filters = {
-      //   cohort: [2017,2018],
-      //   graduated: ,
-      //   remote:
-      //   country:,
-      //   language
-      // }
-
       function getFilters() {
         let cohort = [];
         if ($("#2017").is( ':checked' )) cohort.push("2017");
@@ -84,16 +76,19 @@
 
         let country = $("#country").val();
 
+        let language = $("#languages").val();
+
         
         return {
           cohort,
           graduated,
           remote,
-          country
+          country,
+          language
         };
       }
-      function includeForGraduated(coach, graduatedArray) {
-        return graduatedArray.map(specialization => coach.graduated.split(", ").includes(specialization)).reduce((previousValue, currentValue) => previousValue && currentValue, true);
+      function includeForArray(coach, filterArray) {
+        return filterArray.map(specialization => coach.graduated.split(", ").includes(specialization)).reduce((previousValue, currentValue) => previousValue && currentValue, true);
       }
 
       function includeForRemote(coach, remote) {
@@ -102,7 +97,7 @@
         }
         return true;
       }
-      function includeForCountry(coach, country) {
+      function includeForDropdown(coach, country) {
         if (country) {
           return coach.country === country;
         }
@@ -111,9 +106,10 @@
       function filterCoaches(coaches, filters) {
         const filteredCoaches = coaches.filter(coach => {
           return (filters.cohort.includes(coach.cohort) &&
-            includeForGraduated(coach, filters.graduated) &&
+            includeForArray(coach, filters.graduated) &&
             includeForRemote(coach, filters.remote) &&
-            includeForCountry(coach, filters.country)
+            includeForDropdown(coach, filters.country) &&
+            includeForDropdown(coach, filters.language)
           );
         });
         return filteredCoaches;
@@ -151,7 +147,7 @@
         <div class="coachSocialMedia">
           <span class="field">IG:</span>
           <a href="https://www.instagram.com/${coach.ighandle}/" target="_blank" >@${coach.ighandle}</a
-          >, <span class="field">FB:</span> , <span class="field">Others:</span>
+          >, <span class="field">FB:</span> ${coach.fbhandle}, <span class="field">Others:</span> ${coach.others}
         </div>
         <div class="coachWebsite">
           <span class="field">Website:</span>
@@ -522,10 +518,10 @@
       </select>
       </fieldset>
 
-      <fieldset disabled>
+      <fieldset>
         <legend>Language</legend>
         <select id="languages" name="languages">
-          <option>Select Language</option>
+          <option value="">Select Language</option>
           <option value="af">Afrikaans</option>
           <option value="sq">Albanian - shqip</option>
           <option value="am">Amharic - አማርኛ</option>
