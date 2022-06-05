@@ -132,9 +132,6 @@
                 <div class="meta">
                   <span>English</span>
                 </div>
-              </div>
-
-              <div class="content">
                 <div class="ui list">
                   <div class="item">
                     <i class="marker icon"></i>
@@ -151,25 +148,22 @@
                   <div class="item">
                     <i class="linkify icon"></i>
                     <div class="content">
-                      <a href="${coach.website}">${coach.website}</a>
+                      <a href="${coach.website}">${coach.website ? coach.website : ""}</a>
                     </div>
                   </div>
                   <div class="item">
                     <!-- <i class="instagram icon"></i> -->
                     <div class="content">
-                      IG: <a href="https://www.instagram.com/${coach.ighandle}/">@${coach.ighandle}</a>
+                      IG: <a href="https://www.instagram.com/${coach.ighandle}/">@${coach.ighandle ? coach.ighandle : ""}</a>
                     </div>
                   </div>
                   <div class="item">
                     <!-- <i class="facebook icon"></i> -->
                     <div class="content">
-                      FB: <span>${coach.fbhandle}</span>
+                      FB: <span>${coach.fbhandle ? coach.fbhandle : ""}</span>
                     </div>
                   </div>
                 </div>
-              </div>
-
-              <div class="content">
                 <div class="description">
                   ${coach.about}
                 </div>
@@ -758,7 +752,7 @@
         <div class="ui container segment">
           <h3 class="ui dividing header">Results: <span id="numberOfCoaches"></span></h3>
           <div id="coaches" class="ui cards">
-            <!-- <div class="ui card">
+            <div class="ui card">
               <div class="content">
                 <div class="header">Liz Riley Christiano</div>
                 <div class="meta">
@@ -770,9 +764,6 @@
                 <div class="meta">
                   <span>English</span>
                 </div>
-              </div>
-
-              <div class="content">
                 <div class="ui list">
                   <div class="item">
                     <i class="marker icon"></i>
@@ -805,9 +796,6 @@
                     </div>
                   </div>
                 </div>
-              </div>
-
-              <div class="content">
                 <div class="description">
                   Liz Riley Christiano is a nervous
                   system whisperer for brilliant minds and creative hearts. She supports
@@ -820,7 +808,7 @@
                   intuition and life force energy.
                 </div>
               </div>
-            </div> -->
+            </div>
  
              
           </div>
