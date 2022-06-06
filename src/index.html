@@ -133,7 +133,7 @@
       }
 
       function insertCoach(coach) {
-        console.log("insertCoach");
+        // const othersHtml = coach.others?.split(", ").map(link => `<a href=${link} target="_blank">${link}</a>`).join(", ");
         $("#coaches").append(`<div class="ui card">
               <div class="content">
                 <div class="header">${coach.name}</div>
@@ -175,7 +175,7 @@
                   <div class="item">
                     <i class="facebook icon"></i>
                     <div class="content">
-                      <span>${coach.fbhandle}</span>
+                      <a href="https://www.facebook.com/${coach.fbhandle}/">@${coach.fbhandle}</a>
                     </div>
                   </div>
                   <div class="item">
