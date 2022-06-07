@@ -38,27 +38,28 @@
 
       async function main() {
         coaches = await getCoaches();
-        trimLanguageSelect();
+        trimSelect('languages', 'languages_codes');
+        trimSelect('country', 'country');
         onSearch();
       }
 
-      function trimLanguageSelect() {
-        const availableLanguages = new Set();
+      function trimSelect(selectId, coachProperty) {
+        const availableOptions = new Set();
         coaches.forEach((coach) => {
-          const languages = coach.languages_codes.split(", ");
-          languages.forEach((language) => {
-            availableLanguages.add(language);
+          const coachOptions = coach[coachProperty].split(", ");
+          coachOptions.forEach((language) => {
+            availableOptions.add(language);
           })
         });
         const toRemove = [];
-        $("#languages option").each(function(){
-            const code = $(this).val();
-            if (code !== "" && !availableLanguages.has(code)) {
-              toRemove.push(code);
+        $(`#${selectId} option`).each(function(){
+            const optionValue = $(this).val();
+            if (optionValue !== "" && !availableOptions.has(optionValue)) {
+              toRemove.push(optionValue);
             }
         });
-        toRemove.forEach((code) => {
-          $(`#languages option[value=${code}]`).remove();
+        toRemove.forEach((optionValue) => {
+          $(`#${selectId} option[value=${optionValue}]`).remove();
         });
       }
 
