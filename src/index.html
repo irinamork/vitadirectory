@@ -38,7 +38,28 @@
 
       async function main() {
         coaches = await getCoaches();
+        trimLanguageSelect();
         onSearch();
+      }
+
+      function trimLanguageSelect() {
+        const availableLanguages = new Set();
+        coaches.forEach((coach) => {
+          const languages = coach.languages.split(", ");
+          languages.forEach((language) => {
+            availableLanguages.add(language);
+          })
+        });
+        const toRemove = [];
+        $("#languages option").each(function(){
+            const code = $(this).val();
+            if (code !== "" && !availableLanguages.get(code)) {
+              toRemove.push(code);
+            }
+        });
+        toRemove.forEach((code) => {
+          $(`#languages option[value=${code}]`).remove();
+        });
       }
 
       function getFilters() {
