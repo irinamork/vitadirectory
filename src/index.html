@@ -59,7 +59,7 @@
             }
         });
         toRemove.forEach((optionValue) => {
-          $(`#${selectId} option[value=${optionValue}]`).remove();
+          $(`#${selectId} option[value="${optionValue}"]`).remove();
         });
       }
 
@@ -386,7 +386,7 @@
               <select class="ui search dropdown" id="country">
                 <option value="">Select Country</option>
                 <option value="Afghanistan">Afghanistan</option>
-                <option value="Aland Islands">Åland Islands</option>
+                <option value="Åland Islands">Åland Islands</option>
                 <option value="Albania">Albania</option>
                 <option value="Algeria">Algeria</option>
                 <option value="American Samoa">American Samoa</option>
