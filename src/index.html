@@ -45,7 +45,7 @@
       function trimLanguageSelect() {
         const availableLanguages = new Set();
         coaches.forEach((coach) => {
-          const languages = coach.languages.split(", ");
+          const languages = coach.languages_codes.split(", ");
           languages.forEach((language) => {
             availableLanguages.add(language);
           })
